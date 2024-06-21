@@ -1,0 +1,296 @@
+%****************************************************************%
+% FILE: api.tex                                                  %
+%****************************************************************%
+\documentclass[./main.tex]{subfiles}
+\begin{document}
+Il concetto di \textbf{API} (\textit{Application Programming Interface})  risulta essere abbastanza astratto. Il termine è frequentemente utilizzato nelle interazioni tra gli sviluppatori ma, quando viene posta la domanda "cosa significa?" nessuno sa mai rispondere\footnote{Fonte: esperienza personale dell'autrice.}. Ora si tenterà di dare una definizione precisa e che chiarisca la nozione in modo che chiunque, non necessariamente programmatore, possa comprenderla.\par
+
+Un'API è un insieme di protocolli\footnote{Con il termine \textit{protocollo} si intende un insieme di regole.} che permette a diverse componenti software di comunicare e trasferire dati tra loro. In poche parole si pone come livello intermedio tra due elementi. Questi due elementi vengono chiamati \textit{client} e \textit{server}. Il client, facendo una determinata azione (che potrebbe essere il click su un pulsante) invia una richiesta al server per accedere a una risorsa. La richiesta dipende dal tipo di API implementata, ma in generale contiene sempre le seguenti componenti:
+
+\begin{itemize}
+    \item \textbf{endpoint}: un URL\footcite[\url{https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL}]{website-mozilla-dev} -- \textit{Uniform Resource Locator} -- che fornisce l'accesso alla risorsa, come mostrato in \autoref{fig:example_url}.
+    
+    \begin{minipage}{0.925\textwidth}
+    \includegraphics[width=\textwidth]{images/example_of_url.pdf}
+    \captionsetup{font=small, hypcap=false}
+    \captionof{figure}{Esempio di schema standard di un URL\footcite[\url{https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL/mdn-url-all.pdf}]{website-mozilla-dev}.}
+    \label{fig:example_url}
+    \end{minipage}
+    \vspace{0.25cm}
+    
+    \item \textit{metodo}: tipo di operazione da eseguire sulla risorsa, come aggiornamento, eliminazione, creazione dei dati.
+    \item \textit{parametri}: istruzioni specifiche.
+    \item \textit{header richiesta}: intestazione nella forma di coppie chiave-valore che contengono informazioni aggiuntive, usata spesso nell'API di autenticazione che necessitano di credenziali per l'accesso.
+    \item \textit{corpo della richiesta}: i dati che servono per creare, aggiornare o eliminare una risorsa.
+\end{itemize}
+
+Il server a questo punto invia una risposta al client, che tipicamente contiene:
+
+\begin{itemize}
+    \item \textit{codice di stato}: codici a tre cifre che indicano l'esito della richiesta, i più comuni sono \textit{200 OK} che esprime l'esito positivo e \textit{404 Non trovato} quando il server non trova i dati richiesti.
+    \item \textit{header di risposta}: simili alle intestazioni di richiesta, solo che forniscono informazioni aggiuntive sulla risposta del server.
+    \item \textit{corpo della risposta}: dati e contenuti richiesti dal client, oppure un messaggio di errore se qualcosa è andato storto.
+\end{itemize}
+
+Come esempio sarà usata l'API di \textit{Google Libri}\footcite[\url{https://developers.google.com/books}]{website-google-books-api}. In questo caso il client è il browser utilizzato dall'utente e il server è Google. Ora, dato come \textit{parametro} il codice isbn di un libro, il client invia una richiesta al server per ottenere tutte le informazioni di quel determinato libro. La richiesta ha la seguente forma:
+
+\begin{lstlisting}[language=bash, caption=richiesta del client]
+http GET https://www.googleapis.com/books/v1/volumes?q=9788835711438
+\end{lstlisting}
+
+dove \textit{GET} è il metodo utilizzato, \textit{https://www.googleapis.com/books/v1/volumes} l'URL dell'endpoint e \textit{9788835711438} il parametro della richiesta. Il server poi risponde inviando i dati del libro in formato convenzionale \textit{json} e insieme ad esso il codice \textit{200 OK} per segnalare che la richiesta è andata a buon fine.
+
+In questo esempio la presenza di header non è rilevante, né da parte del server né da parte del client. In altri contesti sono invece fondamentali.
+
+\begin{lstlisting}[language=json, caption=risposta del server]
+HTTP/1.1 200 OK /* codice di stato */
+{
+    "items": [
+        { 
+        "etag": "OvjmWCIxa3g",
+        "id": "bIgzEAAAQBAJ",
+        "kind": "books#volume",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/bIgzEAAAQBAJ",
+        "authors": [
+            "TJ Klune"
+        ],
+        "description": "Linus Baker e' un assistente sociale impiegato al Dipartimento della Magia Minorile. [...] su cosa significhi accorgersi che, a volte, si puo' scegliere la vita che si vuole. E, se si e' abbastanza fortunati, magari quella vita ci sceglie a sua volta.",
+        "imageLinks": {...},
+        "industryIdentifiers": [
+            {
+                "identifier": "9788835711438",
+                "type": "ISBN_13"
+            },
+            {
+                "identifier": "8835711436",
+                "type": "ISBN_10"
+            }
+        ],
+        "infoLink": "https://play.google.com/store/books/details?id=bIgzEAAAQBAJ&source=gbs_api",
+        "language": "it",
+        "publishedDate": "2021-07-13",
+        "title": "La casa sul mare celeste"
+        /* altre informazioni sul libro */
+        }
+    },
+\end{lstlisting}
+
+Le API sono utilizzate perché offrono diversi vantaggi. Automatizzano i lavori ripetitivi, migliorando la produttività degli sviluppatori e accelerando lo sviluppo del software. Forniscono un livello di sicurezza richiedendo autenticazione e autorizzazioni nelle richieste di accesso a dati sensibili. Infine, sono utili per l'accesso a infrastrutture di terze parti quando diverse aziende collaborano\footcite[\url{https://www.postman.com/what-is-an-api/}]{website-postman}.
+
+A questo punto dovrebbe essere chiaro il significato di API e si può entrare nei dettagli di quelle realizzate per \textit{Ismar Data}.
+
+\paragraph{Autenticazione.}\label{subsec:auth}
+\begin{quote}
+\textit{L'autenticazione è il meccanismo che associa una richiesta in entrata a un insieme di credenziali identificative, come l'utente da cui proviene la richiesta o il token con cui è stata firmata.  Le policy di autorizzazione e limitazione possono quindi utilizzare tali credenziali per determinare se la richiesta deve essere consentita\footcite[\url{https://www.django-rest-framework.org/}]{website-django-rest-framwork}}.
+\end{quote}
+
+L'autenticazione utilizzata segue lo schema http\footnote{È possibile che nell'evoluzione dello sviluppo si presenti la necessità di utilizzare altri schemi, al momento si è deciso di proseguire seguendo un percorso semplice.} dell'autenticazione tramite token. Il token viene dato al client da un server autorizzato. Il client utilizzerà il token ricevuto per accedere alle risorse protette ospitate dal server.\par
+
+%\paragraph{Implementazione.} 
+La costruzione delle API di autenticazione è fatta utilizzando Django Rest Framework\footcite[\url{{https://www.django-rest-framework.org/}}]{website-django-rest-framwork}, semplicemente perché si integra bene con il progetto stesso.\par
+
+Innanzitutto occorre aggiungere il framework alle app installate nel progetto e specificare lo schema di autenticazione che si vuole utilizzare.
+
+\begin{lstlisting}[language=Python, caption=settings.py]
+    INSTALLED_APPS = [
+        ...
+        'rest_framework.authtoken',
+    ]
+
+    ...
+
+    REST_FRAMEWORK = {
+        "DEFAULT_AUTHENTICATION_CLASSES": [
+            "ismarbo.authentication.BearerAuthentication",
+        ],
+    }
+\end{lstlisting}
+
+In questo caso, come accennato nel paragrafo di introduzione, si andrà ad utilizzare l'autenticazione tramite token. Spesso viene indicata anche come autenticazione \textit{bearer}.
+
+\begin{quote}
+\textit{Un token di sicurezza con la proprietà che qualsiasi soggetto in possesso del token (un "bearer") può utilizzare il token in qualsiasi modo in cui qualsiasi altro soggetto in possesso di esso può farlo. L'uso di un bearer token non richiede che il portatore dimostri il possesso del materiale della chiave crittografica (prova di possesso)\footcite[3]{rfc6750}.}
+\end{quote}
+
+Successivamente si andrà ad eseguire un comando da terminale per aggiornare (o creare, in caso non esistesse già) il database. In questo modo sarà creata la nuova tabella chiamata \textit{"authtoken\_token"} che, come dice il nome, conterrà i token e i riferimenti agli utenti in possesso di esso.\par
+
+\begin{lstlisting}[language=bash]
+    python manage.py migrate
+\end{lstlisting}
+
+Infine è necessario garantire che ogni utente abbia il suo token. Il problema in questione può avere tre soluzioni distinte. La prima, quella utilizzata, si basa sulla cattura di segnali generati dall'utente che generano un'assegnazione automatica del token. La seconda riguarda la creazione di un endpoint API nel quale l'utente, dato username e password, riceve il proprio token. L'ultima metodologia, poco flessibile, consiste nella creazione dei token nell'interfaccia admin di django.\par
+
+\begin{lstlisting}[language=Python, caption=models.py]
+    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+    def create_auth_token(sender, instance=None, created=False, **kwargs):
+        """
+        A function to make sure that whenever a user is created 
+        its token will be generated
+        """
+        if created:
+            Token.objects.create(user=instance)
+\end{lstlisting}
+
+Lo snippet di codice sopra è collocato nel file \textit{"models.py"} in modo che sia importato automaticamente da django all'avvio. Il segnale \textit{"post\_save"} viene generato alla fine dell'esecuzione del metodo \textit{"save()" } che si occupa di salvare i dati dell'utente all'interno del database. Questo provoca l'esecuzione del codice della funzione che genera il token e lo assegna all'utente.\par
+
+\begin{figure}[!ht]
+\noindent\begin{minipage}{0.6\textwidth}
+\vspace{1cm}
+\includegraphics[width=\textwidth]{images/db_token_user_auth.pdf}
+\captionsetup{font=small, hypcap=false}
+\captionof{figure}{Porzione database postgreSQL. (Schema creato utilizzando drawio\footcite[\url{https://www.drawio.com/}]{website-drawio}).}
+\label{fig:auth_user_token}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.3\textwidth}
+\begin{small}
+Porzione di database rappresentate le due tabelle \textit{auth\_user} e \textit{authtoken\_token} e i relativi attributi. Esse sono collegate tramite l'id dell'utente.
+\end{small}
+\end{minipage}
+\vspace{0.25cm}
+\end{figure}
+%\paragraph{Test.} 
+Per verificare l'effettivo funzionamento dell'autenticazione occorre creare un'API sulla quale effettuare i test. 
+
+\begin{lstlisting}[language=Python, caption=api.py, label=lst:api]
+    class ListUsers(APIView):
+        """
+        View to list all users in the system.
+    
+        * Requires bearer authentication.
+        
+        Test with httpie 
+        http GET 127.0.0.1:8000/users/ 'Authorization: bearer <insert token here>'
+        """
+        authentication_classes = [authentication.BearerAuthentication]
+    
+        def get(self, request, format=None):
+            """
+            Return a list of all users.
+            """
+            usernames = [user.username for user in User.objects.all()]
+            return Response(usernames)
+\end{lstlisting}
+
+L'API in \autoref{lst:api} si occupa di stampare a video la lista degli utenti presenti nel database. La richiesta ha successo (vedi \autoref{lst:200ok}) se il token inserito nell'header della richiesta è valido, altrimenti fallisce con errore (vedi \autoref{lst:401una}).\par
+
+\begin{lstlisting}[language=bash, caption=HTTP/1.1 200 OK, label=lst:200ok]
+    $ http GET 127.0.0.1:8000/users/ 'Authorization: bearer d9a658c85c67054c6c3626848ffac953fe3a9c6f'
+    HTTP/1.1 200 OK
+    Allow: GET, HEAD, OPTIONS
+    Content-Length: 27
+    Content-Type: application/json
+    Cross-Origin-Opener-Policy: same-origin
+    Date: Fri, 05 Apr 2024 15:16:17 GMT
+    Referrer-Policy: same-origin
+    Server: WSGIServer/0.2 CPython/3.11.8
+    Vary: Accept
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: DENY
+    
+    [
+        "system",
+        "cogotti-giulia"
+    ]  
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash, caption=HTTP/1.1 401 Unauthorized, label=lst:401una]
+    $ http GET 127.0.0.1:8000/users/ 'Authorization: bearer 943b12684a39527e57cb0b4e70699883ca36e63c'
+    HTTP/1.1 401 Unauthorized
+    Allow: GET, HEAD, OPTIONS
+    Content-Length: 27
+    Content-Type: application/json
+    Cross-Origin-Opener-Policy: same-origin
+    Date: Fri, 05 Apr 2024 15:18:16 GMT
+    Referrer-Policy: same-origin
+    Server: WSGIServer/0.2 CPython/3.11.8
+    Vary: Accept
+    WWW-Authenticate: Bearer
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: DENY
+    
+    {
+        "detail": "Invalid token."
+    }
+\end{lstlisting}
+
+L'autenticazione tramite token è facile da implementare ma presenta alcune problematiche da considerare. Innanzitutto chiunque possiede la stringa del token può accedere alla risorsa se non si implementano ulteriori livelli di protezione. Infatti ne viene consigliato l'utilizzo solo tramite protocollo \textit{https}\footcite[{https://www.django-rest-framework.org/}]{website-django-rest-framwork}. Il token può contenere informazioni sensibili. Un utente malintenzionato potrebbe modificare alcune informazioni del token -- \textit{un esempio può essere il periodo di validità} -- ottenendo accessi che non dovrebbe avere. Infine, può accadere che l'utente malintenzionato utilizzi un token valido in passato per accedere a risorse nel presente\footcite[10-11]{rfc6750}.\par
+
+L'evoluzione nello sviluppo dell'applicazione potrebbe portare alla necessità di cercare metodi migliori, potenziando l'efficienza e la sicurezza. Al momento, data l'incertezza presente, l'autenticazione bearer rimane l'implementazione scelta ed utilizzata realmente.\par
+
+
+
+\paragraph{API front-end.}
+Le API \textit{front-end} si occupano di passare i dati necessari a visualizzare le informazioni nell'applicazione. Esse sono implementate in stile GraphQL tramite la libreria python.\par
+
+%\paragraph{Implementazione.} 
+L'applicazione deve visualizzare la lista delle stazioni osservative fisse, sia come forma di pallini sulla mappa che come lista tradizionale. Una singola API è in grado di fornire questi dati, sarà poi il front-end ad occuparsi della chiamata e dell'inserimento nella giusta interfaccia.\par
+
+I dati delle stazioni sono statici e dunque risiedono, insieme ai radar e ai satelliti, nell'entità \textit{"ismarbo\_location"} (vedi porzione di schema in \autoref{fig:db_location_sensor}) all'interno del database postgreSQL. D'ora in poi si userà il termine \textit{location} per indicare gli elementi della tabella in questione.
+
+\begin{figure}[!ht]
+\noindent\begin{minipage}{0.6\textwidth}
+\vspace{1cm}
+\includegraphics[width=\textwidth]{images/db_location_sensor.pdf}
+\captionsetup{font=small, hypcap=false}
+\captionof{figure}{Porzione database. (Schema creato utilizzando drawio\footcite[\url{https://www.drawio.com/}]{website-drawio}).}
+\label{fig:db_location_sensor}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.3\textwidth}
+\begin{small}
+Tabelle del database rappresentanti le \textit{location} (ismarbo\_location) e i sensori (ismarbo\_sensor). Relazione rappresentata dalla linea che collega i campi \textit{code} e \textit{location\_code}. La freccia singola simboleggia il fatto che un sensore può appartenere ad un'unica \textit{location}, mentre la freccia doppia che una \textit{location} può avere più di un sensore.
+\end{small}
+\end{minipage}
+\vspace{0.25cm}
+\end{figure}
+
+Gli attributi di ogni location sono:
+
+\begin{itemize}
+    \item \textit{code}: codice identificativo univoco (per es. ISMAR\_AAOT).
+    \item \textit{id}: identificatore numerico auto incrementato all'aggiunta di nuovi dati, inserito perché il team ha deciso che è sempre bene averlo.
+    \item \textit{name}: nome della location (per es. Piattaforma Oceanografica Acqua Alta).
+    \item \textit{active}: indica se la location funziona oppure no. Fondamentale in caso di guasto non risolvibile in poco tempo, dato che le location sono poste principalmente sul mare (piattaforme, boe e radar) o addirittura nello spazio (satelliti). Grazie al campo active l'applicazione continua a funzionare.
+    \item stage: indica se la stazione deve essere considerata nella versione in produzione dell'applicazione, al momento sono tutte in "test".
+    \item \textit{config\_fe}: le informazioni della location (per es. latitudine, longitudine, tipo, etc.) in formato json.
+    \item \textit{insert\_user\_id} e \textit{update\_user\_id}: riferimento all'id dell'utente che ha inserito o aggiornato i valori della \textit{location}.
+    \item \textit{insert\_datetime} e \textit{update\_datetime}: data e ora di inserimento e aggiornamento della location.
+    \item \textit{data\_bo} e \textit{config\_bo}: eventuali dati e configurazioni interne del backoffice.
+\end{itemize}
+
+Ogni location, per misurare realmente le variabili climatiche, utilizza dei sensori. Essi risiedono nella tabella \textit{"ismarbo\_sensor"}. I campi all'interno sono simili a quelli presenti nella location, ad eccezione delle chiavi esterne. La chiave esterna \lstinline{location_code} permette di collegare i sensori alla propria location, mentre \lstinline{sensor_model_code} collega il sensore alla tabella contenente informazioni sul modello del sensore.\par
+
+Python, grazie alle funzionalità offerte da Django, ha dei meccanismi per rispecchiare lo schema del database in modelli, salvati nel file \textit{"models.py"}, con una classe per ogni entità. Il file \textit{"schema.py"} invece descrive il modello di dati e fornisce un server GraphQL con un set associato di metodi di \textit{resolver} che sanno come recuperare i dati\footcite[\url{https://docs.graphene-python.org/projects/django/en/latest/queries/}]{website-graphene-docs}. Tutte le API sono state create utilizzando i metodi di resolver. Un resolver ha la forma \lstinline[language=python]{def resolve_foo(parent, info, **kwargs)} 
+dove \lstinline{foo} è il nome del campo dichiarato nell'oggetto \lstinline{Query}.\par
+
+L'API per la lista delle stazioni osservative fisse (vedi \autoref{lst:api_list_location}) segue lo schema base evidenziato sopra. Al momento l'unico filtro utilizzato è quello che verifica se la stazione è attiva o no quando non si è in fase di sviluppo (settings.debug false).
+
+\begin{lstlisting}[language=python, caption=API lista stazioni osservative fisse, label=lst:api_list_location]
+    # lista delle stazioni osservative fisse
+    list_location = graphene.List(IsmarboLocationType)
+
+    def resolve_list_location(root, info, **kwargs):
+        query = IsmarboLocation.objects.all()
+        if settings.DEBUG is False:
+            query = query.filter(active=True)
+        return query
+\end{lstlisting}
+
+Le altre API create sono molto simili, semplicemente utilizzano modelli differenti e restituiscono, sempre tramite resolver, i dati per cui sono state costruite. Lo sviluppo del front-end non ha ancora avuto inizio, quindi il team di back-end ha deciso di creare API generali che restituiscano tutti i dati senza filtri. Appena avrà inizio si effettuerà un incontro tra i due team per decidere la strada migliore da percorrere, quindi quale lato applicherà i filtri e quali dati sono realmente necessari.\par
+
+Un esempio di utilizzo di queste API è presente in \autoref{fig:demo_locations}. Le immagini mostrano i risultati delle richieste. In particolare nella prima immagine è presente il risultato dell'API che restituisce la lista delle stazioni osservative fisse. Le altre due immagini rappresentano i widget, ovvero le variabili climatiche osservate, delle stazioni Piattaforma Oceanografica Acqua Alta e Paloma, ottenuti selezionandole dalla lista. Si può notare come i dati non siano disponibili, ad eccezione di un grafico creato con dati appositi per testare il funzionamento dell'API. Questo conferma la lentezza dello sviluppo e l'impossibilità di raggiungere un traguardo fino a quando il problema dei dati non sarà risolto.
+
+\begin{figure}[!ht]
+\noindent\begin{minipage}[c]{\textwidth}
+\vspace{1cm}
+\includegraphics[width=\textwidth]{images/demo_api_stazioni_osservative_fisse.pdf}
+\captionsetup{font=small, hypcap=false}
+\captionof{figure}{Schermate della demo web che utilizzano le API appena descritte per visualizzare la lista delle stazioni osservative fisse e i widget con i dati, non disponibili, delle variabili climatiche associate ad ognuna di esse. L'unico grafico è stato realizzato tramite dati di test\protect\footnote{Fonte: screenshot dell'autrice.}.}
+\label{fig:demo_locations}
+\end{minipage}
+\hspace{0.05\textwidth}
+\vspace{0.25cm}
+\end{figure}
+
+\end{document}

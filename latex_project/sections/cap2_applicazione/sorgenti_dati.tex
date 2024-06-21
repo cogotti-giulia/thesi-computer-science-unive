@@ -1,0 +1,21 @@
+%****************************************************************%
+% FILE: sorgenti_dati.tex                                        %
+%****************************************************************%
+\documentclass[./main.tex]{subfiles}
+
+\begin{document}
+
+I dati si suddividono in tre categorie principali: \textbf{stazioni osservative fisse}, \textbf{osservazioni da satellite} e \textbf{modelli di previsione}. È opportuno porre in luce immediatamente il \textit{problema} alla base della raccolta di questi dati. Alcune sorgenti sono pubbliche (osservazioni da satellite e una parte delle stazioni osservative fisse), altre invece sono gestite da enti diversi e privati che tendono a non collaborare tra di loro. C'è stato il tentativo di uniformare il tutto ma, data la gestione privata dei server, non si è ancora giunti ad un accordo. Questo compromette il funzionamento dell'applicazione, sia per la difficoltà di reperire i dati che per assicurarsi che questi si aggiornino nel tempo. Al momento ISMAR-CNR, per evitare il congelamento della produzione dell'applicazione, ha preso la decisione di incaricare Elan42 della costruzione di un datacenter adatto alla memorizzazione dei dati privati provenienti dalle stazioni osservative fisse. Questa soluzione richiederà un quantitativo di tempo non indifferente. Si pensi che, dopo mesi, non ha ancora avuto inizio! Inizialmente ideato come una provvisoria soluzione adatta al contenimento di alcuni dati, si è giunti alla conclusione che fosse meglio creare qualcosa che funzionasse a lungo termine. Quindi, da un piccolo datacenter si è passati all'idea di creare un'infrastruttura che non solo contenesse i dati ma che si occupasse anche della loro elaborazione in più fasi: inizialmente vengono prelevati i dati dai sensori, in formato grezzo, a questo seguono due fasi di pulizia e interpolazione\footnote{\textbf{interpolazióne} [Der. del lat. interpolatio -onis, da interpolare comp. di inter- e v. affine a polire "pulire"] Procedimento per inserire tra due o più valori (in partic., dati sperimentali) altri valori in modo da ottenere una successione che abbia una certa regolarità, eventualmente rappresentabile con una funzione che abbia come suoi valori, sia pure approssimativamente, i valori di partenza; \cite{treccani-interpolazione}.} di dati con applicazione di algoritmi appositi e infine, si arriva ad avere dei dati gestibili dal back-end dell'applicazione. Ecco che il tempo e i costi di produzione aumentano. Inoltre, continua a persistere il problema degli enti privati che non riescono, o non vogliono, dare accesso diretto ai sensori posti sul mare per il raccoglimento dei dati, né per il datacenter né per l'applicazione. Quindi, ISMAR-CNR ha proposto una soluzione provvisoria: ogni soggetto inserisce periodicamente i dati raccolti all'interno di una cartella condivisa, situata nei server ISMAR, e l'applicazione realizzata andrà a prelevarli da essa. Questo però non ha riscosso successo tra gli enti privati, dato che alcuni hanno acconsentito a collaborare, altri no. Inoltre non ci sarebbero certezze sulla disponibilità continua dei dati, dato che l'aggiornamento si basa su esseri umani che inseriscono periodicamente dei file nella cartella condivisa. Quindi così facendo non si risolverebbe completamente il problema. In conclusione, per quanto riguarda le sorgenti private, si è ancora ad un punto di stallo.\par
+
+Qui di seguito saranno elencate le diverse fonti, pubbliche e private, evidenziando i dati raccolti, dove presenti, e le modalità di accesso ad essi. \par
+
+\subsection{Stazioni osservative fisse}\label{subsec:staz_oss_fisse}
+\subfile{/sorgenti_dati/stazioni_osservative_fisse.tex}
+
+\subsection{Osservazioni da satellite}\label{subsec:oss_satellite}
+\subfile{/sorgenti_dati/osservazioni_satellite.tex}
+
+\subsection{Modelli di previsione}\label{subsec:modelli_previsione}
+\subfile{/sorgenti_dati/modelli_previsione.tex}
+
+\end{document}

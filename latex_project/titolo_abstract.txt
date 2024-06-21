@@ -1,0 +1,9 @@
+TITOLO.
+
+"Il tempo: meteorologico e umano. Illustrazione e sviluppo di un'applicazione 
+software, tra nuove competenze e infiniti tempi di attesa"
+
+ABASTRACT.
+
+Il presente documento si occupa di analizzare lo sviluppo di un'applicazione Android/iOS, commissionata da ISMAR-CNR e prodotta dall'azienda Elan42, per la visualizzazione di dati meteorologici provenienti da stazioni, radar e satelliti. L'applicazione raccoglie i dati da diverse sorgenti, pubbliche e private. Ed è in questa fase che iniziano i problemi. Gli enti privati che gestiscono i dati tendono a non collaborare tra loro e a custodirli segretamente. Questo compromette il processo evolutivo del software e spiega come mai lo sviluppo proceda lentamente e non si sia ancora giunti alla creazione di una versione stabile dell'applicazione. Per i dati pubblici non risultano esserci particolari criticità ed è stato solo necessario comprenderne la tipologia. Questi dati, quando accessibili, vengono elaborati e inviati su richiesta dell'utente al lato grafico dell'applicazione che li visulizza. Tutto questo lavoro viene supportato da politiche di riuso del codice che consentono di creare modelli generali per l'importazione dei dati e per l'invio e la visualizzazione di essi. Inoltre un database locale aiuta nella memorizzazione delle informazioni per rendere efficiente l'accesso ai dati da parte dell'applicazione mobile. Una volta che saranno superati gli ostacoli, l'applicazione entrarà finalmente in produzione e, al rilascio della prima versione, sarà utilizzabile da qualsiasi utente!
+

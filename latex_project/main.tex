@@ -1,0 +1,55 @@
+%****************************************************************%
+% FILE: main.tex                                                 %
+%****************************************************************%
+\DocumentMetadata{testphase=new-or-1}
+\documentclass[12pt,
+               a4paper,
+               italian,
+               twoside,openright,]{book}
+\usepackage[main=italian]{babel}
+\usepackage[utf8]{inputenc}
+
+% import settings
+\input{customized_settings}
+% graphics folder
+\graphicspath{ {./images/} }
+
+%****************************************************************%
+%                         start document                         %
+%****************************************************************%
+\begin{document}
+
+% frontespizio
+\pagestyle{plain}
+
+\input{frontespizio.tex}
+
+\cleardoublepage
+\frontmatter
+% abstract
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{sections/abstract.tex}
+%indice
+\tableofcontents
+%elenco figure
+%\listoffigures 
+\mainmatter
+\pagestyle{headings}
+
+% chapters
+\input{chapters}
+% bibliography
+\pagestyle{plain}
+\cleardoublepage
+\printbibliography[heading=bibintoc, title={Bibliografia}]
+
+\cleardoublepage
+%\pagenumbering{gobble} % to remove page number
+% ringraziamenti
+\chapter*{Ringraziamenti}
+\addcontentsline{toc}{chapter}{Ringraziamenti}
+\input{sections/ringraziamenti.tex}
+
+\end{document}
+
