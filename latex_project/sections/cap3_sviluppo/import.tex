@@ -56,7 +56,7 @@ Le funzioni che si occupano di interagire con il server dei cataloghi thredds e 
 La procedura \textit{"etl"} in \autoref{lst:etl_urls} contiene tutte le funzionalità per scaricare i dati dai cataloghi e convertirli tramite gdal. Inizialmente quindi i dati sono scaricati dal catalogo con una funzione (vedi \autoref{lst:etl_download_netcdf}) che, dato il link al file netCDF sul server, lo scarica in una cartella predefinita, controllando che il server dia un codice di risposta positivo.
 
 \begin{lstlisting}[language=Python, 
-    caption={Porzione della procedura utilizzata per scaricare, convertire e salvare i dati dei cataloghi.},
+    caption={Procedura utilizzata per scaricare e convertire i dati dei cataloghi thredds.},
     label=lst:etl_urls]
     def etl(day: str, dataset: str, variable: str, add_variable_to_filepath: bool = False):
     ...

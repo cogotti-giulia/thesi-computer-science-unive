@@ -11,9 +11,9 @@
 \contentsline {subsection}{\numberline {2.3.1}Stazioni osservative fisse}{16}{subsection.2.3.1}%
 \contentsline {paragraph}{Stazioni meteorologiche fisse.}{16}{section*.14}%
 \contentsline {paragraph}{Radar.}{23}{section*.21}%
-\contentsline {subsection}{\numberline {2.3.2}Osservazioni da satellite}{25}{subsection.2.3.2}%
-\contentsline {paragraph}{Clorofilla-a (Chla).}{25}{section*.24}%
-\contentsline {paragraph}{Sea surface temperature (SST).}{26}{section*.26}%
+\contentsline {subsection}{\numberline {2.3.2}Osservazioni da satellite}{24}{subsection.2.3.2}%
+\contentsline {paragraph}{Clorofilla-a (Chla).}{26}{section*.24}%
+\contentsline {paragraph}{Sea surface temperature (SST).}{27}{section*.26}%
 \contentsline {subsection}{\numberline {2.3.3}Modelli di previsione}{28}{subsection.2.3.3}%
 \contentsline {paragraph}{Nettuno.}{29}{section*.28}%
 \contentsline {paragraph}{Henetus - Mar Adriatico.}{32}{section*.32}%
@@ -24,10 +24,10 @@
 \contentsline {paragraph}{Tecnologie.}{44}{section*.41}%
 \contentsline {section}{\numberline {3.2}Importazione dati}{47}{section.3.2}%
 \contentsline {paragraph}{Sorgenti di dati pubbliche.}{47}{section*.43}%
-\contentsline {paragraph}{Sorgenti di dati private.}{56}{section*.48}%
+\contentsline {paragraph}{Sorgenti di dati private.}{55}{section*.48}%
 \contentsline {section}{\numberline {3.3}Costruzione API}{61}{section.3.3}%
 \contentsline {paragraph}{Autenticazione.}{63}{section*.49}%
-\contentsline {paragraph}{API front-end.}{68}{section*.51}%
-\contentsline {chapter}{\numberline {4}Conclusioni}{73}{chapter.4}%
-\contentsline {chapter}{Bibliografia}{75}{chapter*.54}%
-\contentsline {chapter}{Ringraziamenti}{83}{chapter*.55}%
+\contentsline {paragraph}{API front-end.}{67}{section*.51}%
+\contentsline {chapter}{\numberline {4}Conclusioni}{71}{chapter.4}%
+\contentsline {chapter}{Bibliografia}{73}{chapter*.54}%
+\contentsline {chapter}{Ringraziamenti}{81}{chapter*.55}%

@@ -92,7 +92,7 @@ Immagine rappresentante il quadrante del mar Adriatico. I puntini rappresentano 
 \vspace{0.25cm}
 \end{figure}
 
-I dati non sono pubblici. Anche in questo caso il cliente ha fornito, per conto dell'ente privato che gestisce i dati, alcuni file di esempio riguardanti le misurazioni effettuate in un arco temporale di quattro mesi, dal 14 gennaio al 23 aprile 2024. Questo, ovviamente, comporta le stesse problematiche presenti per i file di Nettuno. Ogni file contiene i campi d'onda relativi a 24 ore sull'area del Mar Adriatico. Il nome di ogni file segue il formato \textit{OPEyymmdd12xxxx.gz} dove OPE significa run/previsione OPERATIVA e \textit{gz} indica la compressione del file. La data (\textit{yymmdd}) si riferisce all'anno, mese e giorno dell'\textit{ultimo} campo della previsione. Il numero, sempre \textit{12}, indica l'ora di \textit{inizio} della previsione.  Ne risulta che il giorno di inizio è in realtà il precedente alla data presente nel nome del file, in quanto quest'ultima indica appunto la data dell'\textit{ultimo} campo della previsione (al termine delle 24 ore di monitoraggio). Infine i quattro numeri \textit{(xxxx}) possono assumere sei diversi valori di diverso significato:
+I dati non sono pubblici. Anche in questo caso il cliente ha fornito, per conto dell'ente privato che gestisce i dati, alcuni file di esempio riguardanti le misurazioni effettuate in un arco temporale di quattro mesi, dal 14 gennaio al 23 aprile 2024. Questo, ovviamente, comporta le stesse problematiche presenti per i file di Nettuno. Ogni file contiene i campi d'onda relativi a 24 ore sull'area del Mar Adriatico. Il nome di ogni file segue il formato \textit{OPEyymmdd12xxxx.gz} dove OPE significa run/previsione OPERATIVA e \textit{gz} indica la compressione del file. La data (\textit{yymmdd}) si riferisce all'anno, mese e giorno dell'\textit{ultimo} campo della previsione. Il numero, sempre \textit{12}, indica l'ora di \textit{inizio} della previsione.  Ne risulta che il giorno di inizio è in realtà il precedente alla data presente nel nome del file, in quanto essa indica appunto la data dell'\textit{ultimo} campo della previsione (al termine delle 24 ore di monitoraggio). Infine i quattro numeri \textit{(xxxx}) possono assumere sei diversi valori di diverso significato:
 \begin{itemize}
     \item 0000: \textit{analisi} in ore;
     \item 0024: \textit{previsione} in ore del giorno 1;
@@ -102,7 +102,7 @@ I dati non sono pubblici. Anche in questo caso il cliente ha fornito, per conto 
     \item 0120: \textit{previsione} in ore del giorno 5.
 \end{itemize}
 
-In \autoref{fig:thunar_OPE_henetus_compressed} è presente l'elenco dei file ricevuti. Il file selezionato, \textit{OPE240114120072.gz}, rappresenta la previsione del terzo giorno (\textit{0072}) a partire dal giorno 13/01/2024 alle ore 12; quindi la previsione del giorno 16/01/2024.
+In \autoref{fig:thunar_OPE_henetus_compressed} è presente l'elenco dei file ricevuti. Il file \textit{OPE240114120072.gz} selezionato, rappresenta la previsione del terzo giorno (\textit{0072}) a partire dal giorno 13/01/2024 alle ore 12; come specificato in precedenza, un giorno in anticipo rispetto alla data presente nel nome del file.
 
 \begin{figure}[!ht]
 \noindent \begin{minipage}{\textwidth}
@@ -116,7 +116,7 @@ In \autoref{fig:thunar_OPE_henetus_compressed} è presente l'elenco dei file ric
 \vspace{0.25cm}
 \end{figure}
 
-All'interno di questi file compressi è presente un unico file contenente le reali misurazioni. Il nome corrisponde al relativo file \textit{OPEyymmdd12xxxx.gz}, a meno dell'estensione. Il contenuto di questi file, a prima vista, risulta essere particolarmente complicato. Il gestore di questi dati ha quindi fornito una breve guida per aiutare gli sviluppatori nella comprensione. Un esempio, relativo al file \textit{OPE240114120072} contenuto nel file selezionato in \autoref{fig:thunar_OPE_henetus_compressed}, è mostrato in \autoref{fig:OPE_henetus_example_2401161500}. I campi d'onda sono raggruppati a intervalli di 3 ore e, per ogni ora, sono presenti quattro matrici di dimensione 97x73. Vengono considerati quattro parametri d'onda:
+All'interno di questi file compressi è presente un unico file contenente le reali misurazioni. Il nome corrisponde al relativo file \textit{OPEyymmdd12xxxx.gz}, a meno dell'estensione. Il contenuto di questi file, a prima vista, risulta essere particolarmente complicato. Il gestore di questi dati ha quindi fornito una breve guida per aiutare gli sviluppatori nella comprensione. I campi d'onda sono raggruppati a intervalli di 3 ore e, per ogni ora, sono presenti quattro matrici di dimensione 97x73. Vengono considerati quattro parametri d'onda:
 \begin{itemize}
     \item \textbf{ONDAHS}: altezza onda;
     \item \textbf{ONDADIR}: direzione onda;
@@ -142,6 +142,6 @@ con passo geografico 0.083 x 0.083  (1/12 x 1/12 di gradi) e il punto (1,1), pos
 \vspace{0.25cm}
 \end{figure}
 
-La prima riga di ogni file contiene data e ora, dimensioni della matrice e limiti geografici. Da notare che la data non è la stessa del nome del file. Infatti si riferisce esattamente al giorno della previsione. Nell'esempio in questione si ha \textit{2401161500        97        73  12.0  40.0  20.0  46.0}. In questo caso la data è 16/01/2024 alle ore 15:00. Che indica esattamente la data e il giorno della previsione la previsione del terzo giorno (\textit{0072}) a partire dal giorno 13/01/2024 alle ore 12 (nome del file \textit{OPE240114120072}). Le righe successive contengono le matrici, con i parametri d'onda, e sono lette riga per riga dall'alto verso il basso (ovvero da nord a sud e da ovest ad est). Il grafico richiesto dal cliente è relativo all'altezza delle onde, quindi le uniche matrici rilevanti sono ONDAHS e ONDADIR.\par
+La prima riga di ogni file contiene data e ora, dimensioni della matrice e limiti geografici. Da notare che la data non è la stessa del nome del file. Infatti si riferisce esattamente al giorno della previsione. Un esempio, relativo al file \textit{OPE240114120072} contenuto nel file selezionato in \autoref{fig:thunar_OPE_henetus_compressed}, è mostrato in \autoref{fig:OPE_henetus_example_2401161500}.  Nell'esempio in questione si ha, come prima riga, \textit{2401161500        97        73  12.0  40.0  20.0  46.0}. In questo caso la data è 16/01/2024 alle ore 15:00, che indica esattamente la data della previsione del terzo giorno (\textit{0072}) a partire dal giorno 13/01/2024 alle ore 12 (nome del file \textit{OPE240114120072}), con conclusione il 16/01/2024 alle ore 15:00. Le righe successive contengono le matrici, con i parametri d'onda, e sono lette riga per riga dall'alto verso il basso (ovvero da nord a sud e da ovest ad est). Il grafico richiesto dal cliente è relativo all'altezza delle onde, quindi le uniche matrici rilevanti sono ONDAHS e ONDADIR.\par
 
 \end{document}

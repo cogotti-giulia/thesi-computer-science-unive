@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.29)  21 JUN 2024 16:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.29)  22 JUN 2024 15:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1625,40 +1625,42 @@ File: images/hfr_catalog.pdf Graphic file (type pdf)
 <use images/hfr_catalog.pdf>
 Package pdftex.def Info: images/hfr_catalog.pdf  used on input line 205.
 (pdftex.def)             Requested size: 418.25368pt x 129.80307pt.
- [24 <./images/radar_map.pdf> <./images/hfr_catalog.pdf>])
-(./sections/cap2_applicazione//sorgenti_dati/osservazioni_satellite.tex
-<images/aqua_render_lrg.pdf, id=483, 845.04686pt x 475.33885pt>
+) (./sections/cap2_applicazione//sorgenti_dati/osservazioni_satellite.tex
+<images/aqua_render_lrg.pdf, id=469, 845.04686pt x 475.33885pt>
 File: images/aqua_render_lrg.pdf Graphic file (type pdf)
 <use images/aqua_render_lrg.pdf>
 Package pdftex.def Info: images/aqua_render_lrg.pdf  used on input line 12.
 (pdftex.def)             Requested size: 209.12683pt x 117.6304pt.
 
+[24 <./images/radar_map.pdf>]
 
 LaTeX Font Warning: Font shape `T1/phv/m/scit' undefined
 (Font)              using `T1/phv/m/sc' instead on input line 31.
 
-[25 <./images/aqua_render_lrg.pdf>]
-<images/godiva_chla.pdf, id=518, 845.04686pt x 562.8321pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [25 <./images/hfr_catalog.pdf> <./images/aqua_render_lrg.pdf>]
+<images/godiva_chla.pdf, id=516, 845.04686pt x 562.8321pt>
 File: images/godiva_chla.pdf Graphic file (type pdf)
 <use images/godiva_chla.pdf>
 Package pdftex.def Info: images/godiva_chla.pdf  used on input line 47.
 (pdftex.def)             Requested size: 418.25368pt x 278.5727pt.
  [26] [27 <./images/godiva_chla.pdf>]
-<images/godiva_sst.pdf, id=558, 845.04686pt x 561.932pt>
+<images/godiva_sst.pdf, id=557, 845.04686pt x 561.932pt>
 File: images/godiva_sst.pdf Graphic file (type pdf)
 <use images/godiva_sst.pdf>
 Package pdftex.def Info: images/godiva_sst.pdf  used on input line 79.
 (pdftex.def)             Requested size: 418.25368pt x 278.12718pt.
-)
-(./sections/cap2_applicazione//sorgenti_dati/modelli_previsione.tex
+) (./sections/cap2_applicazione//sorgenti_dati/modelli_previsione.tex [28]
 Underfull \hbox (badness 1715) in paragraph at lines 14--14
 [][][][][]\T1/phv/m/n/10 ISMAR-CNR, \T1/phv/m/sl/10 Isti-tu-to di scien-ze ma-r
 i-ne (On-li-ne)\T1/phv/m/n/10 , []$\T1/cmtt/m/n/10 https : / / www . ismar . cn
 r . it /
  []
 
-[28] [29 <./images/godiva_sst.pdf>]
-<images/thunar_GRIB_nettuno_compressed.pdf, id=597, 845.04686pt x 616.82251pt>
+[29 <./images/godiva_sst.pdf>]
+<images/thunar_GRIB_nettuno_compressed.pdf, id=595, 845.04686pt x 616.82251pt>
 File: images/thunar_GRIB_nettuno_compressed.pdf Graphic file (type pdf)
 <use images/thunar_GRIB_nettuno_compressed.pdf>
 Package pdftex.def Info: images/thunar_GRIB_nettuno_compressed.pdf  used on inp
@@ -1693,20 +1695,14 @@ Underfull \hbox (badness 3954) in paragraph at lines 89--91
  []
 
 [32] [33 <./images/thunar_GRIB_nettuno_14042024.pdf>]
-Overfull \hbox (53.4094pt too wide) in paragraph at lines 105--106
-[]\T1/phv/m/n/12 In []Fi-gu-ra 2.26[][] è pre-sen-te l'e-len-co dei fi-le ri-ce
--vu-ti. Il fi-le se-le-zio-na-to, \T1/phv/m/sl/12 OPE240114120072.gz\T1/phv/m/n
-/12 ,
- []
-
 <images/thunar_OPE_henetus_compressed.pdf, id=651, 845.04686pt x 676.0375pt>
 File: images/thunar_OPE_henetus_compressed.pdf Graphic file (type pdf)
 <use images/thunar_OPE_henetus_compressed.pdf>
 Package pdftex.def Info: images/thunar_OPE_henetus_compressed.pdf  used on inpu
 t line 111.
 (pdftex.def)             Requested size: 334.60422pt x 267.68692pt.
-[34 <./images/plot_pygrib_nettuno_202404141200.pdf>]
-<images/OPE_henetus_example_2401161500.pdf, id=665, 845.04686pt x 676.0375pt>
+ [34 <./images/plot_pygrib_nettuno_202404141200.pdf>]
+<images/OPE_henetus_example_2401161500.pdf, id=662, 845.04686pt x 676.0375pt>
 File: images/OPE_henetus_example_2401161500.pdf Graphic file (type pdf)
 <use images/OPE_henetus_example_2401161500.pdf>
 Package pdftex.def Info: images/OPE_henetus_example_2401161500.pdf  used on inp
@@ -1719,18 +1715,18 @@ pressed.pdf>] [37 <./images/OPE_henetus_example_2401161500.pdf>] [38
 Capitolo 3.
 (./sections/cap3_sviluppo/sviluppo.tex
 (./sections/cap3_sviluppo/strumentazione.tex [39] [40]
-<images/git_snapshot.pdf, id=731, 845.04686pt x 334.34102pt>
+<images/git_snapshot.pdf, id=732, 845.04686pt x 334.34102pt>
 File: images/git_snapshot.pdf Graphic file (type pdf)
 <use images/git_snapshot.pdf>
 Package pdftex.def Info: images/git_snapshot.pdf  used on input line 26.
 (pdftex.def)             Requested size: 209.12683pt x 82.73817pt.
-<images/git_states.pdf, id=733, 845.04686pt x 465.83205pt>
+<images/git_states.pdf, id=734, 845.04686pt x 465.83205pt>
 File: images/git_states.pdf Graphic file (type pdf)
 <use images/git_states.pdf>
 Package pdftex.def Info: images/git_states.pdf  used on input line 53.
 (pdftex.def)             Requested size: 209.12683pt x 115.27779pt.
  [41 <./images/git_snapshot.pdf> <./images/git_states.pdf>] [42]
-<images/ismarbo_merging.pdf, id=769, 845.04686pt x 344.42667pt>
+<images/ismarbo_merging.pdf, id=770, 845.04686pt x 344.42667pt>
 File: images/ismarbo_merging.pdf Graphic file (type pdf)
 <use images/ismarbo_merging.pdf>
 Package pdftex.def Info: images/ismarbo_merging.pdf  used on input line 83.
@@ -1756,43 +1752,39 @@ Package pdftex.def Info: images/graphiql_interface.pdf  used on input line 133.
 (pdftex.def)             Requested size: 418.25368pt x 212.39479pt.
  [45] [46 <./images/graphiql_interface.pdf>]) (./sections/cap3_sviluppo/import.
 tex
-<images/dataset_access.pdf, id=856, 845.04686pt x 304.49623pt>
+<images/dataset_access.pdf, id=855, 845.04686pt x 304.49623pt>
 File: images/dataset_access.pdf Graphic file (type pdf)
 <use images/dataset_access.pdf>
 Package pdftex.def Info: images/dataset_access.pdf  used on input line 12.
 (pdftex.def)             Requested size: 209.12683pt x 75.35258pt.
-<images/client-server-model.pdf, id=860, 845.04686pt x 519.10017pt>
+<images/client-server-model.pdf, id=859, 845.04686pt x 519.10017pt>
 File: images/client-server-model.pdf Graphic file (type pdf)
 <use images/client-server-model.pdf>
 Package pdftex.def Info: images/client-server-model.pdf  used on input line 30.
 
 (pdftex.def)             Requested size: 209.12683pt x 128.45987pt.
- [47]
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <10> not available
 (Font)              Font shape `TS1/phv/m/sl' tried instead on input line 45.
 LaTeX Font Info:    Font shape `TS1/phv/m/sl' will be
 (Font)              scaled to size 9.49997pt on input line 45.
- [48 <./images/dataset_access.pdf> <./images/client-server-model.pdf>]
+ [47] [48 <./images/dataset_access.pdf> <./images/client-server-model.pdf>]
 
 LaTeX Font Warning: Font shape `T1/phv/m/scit' undefined
 (Font)              using `T1/phv/m/sc' instead on input line 47.
 
-[49] [50]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [51]
+[49] [50] [51]
 Overfull \hbox (4.16168pt too wide) in paragraph at lines 129--131
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] \T1/phv/m/n/12 : con-ver-
  []
 
 [52] [53] [54]
-<images/demo_sst_chla.pdf, id=1080, 845.04686pt x 508.56923pt>
+<images/demo_sst_chla.pdf, id=1089, 845.04686pt x 508.56923pt>
 File: images/demo_sst_chla.pdf Graphic file (type pdf)
 <use images/demo_sst_chla.pdf>
 Package pdftex.def Info: images/demo_sst_chla.pdf  used on input line 238.
 (pdftex.def)             Requested size: 418.25368pt x 251.71538pt.
-<images/not_demo_video_plot_radar_30may.pdf, id=1083, 845.04686pt x 591.53278pt
+<images/not_demo_video_plot_radar_30may.pdf, id=1092, 845.04686pt x 591.53278pt
 >
 File: images/not_demo_video_plot_radar_30may.pdf Graphic file (type pdf)
 <use images/not_demo_video_plot_radar_30may.pdf>
@@ -1800,8 +1792,11 @@ Package pdftex.def Info: images/not_demo_video_plot_radar_30may.pdf  used on in
 put line 252.
 (pdftex.def)             Requested size: 418.25368pt x 292.77803pt.
  [55] [56 <./images/demo_sst_chla.pdf>] [57 <./images/not_demo_video_plot_radar
-_30may.pdf>] [58] [59] [60]) (./sections/cap3_sviluppo/api.tex
-<images/example_of_url.pdf, id=1248, 845.04686pt x 81.69125pt>
+_30may.pdf>] [58] [59]) (./sections/cap3_sviluppo/api.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [60]
+<images/example_of_url.pdf, id=1247, 845.04686pt x 81.69125pt>
 File: images/example_of_url.pdf Graphic file (type pdf)
 <use images/example_of_url.pdf>
 Package pdftex.def Info: images/example_of_url.pdf  used on input line 14.
@@ -1818,7 +1813,7 @@ File: lstlang1.sty 2024/02/21 1.10 listings language file
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/02/21 1.10 listings language file
 ) [62] [63] [64]
-<images/db_token_user_auth.pdf, id=1341, 845.04686pt x 598.64375pt>
+<images/db_token_user_auth.pdf, id=1342, 845.04686pt x 598.64375pt>
 File: images/db_token_user_auth.pdf Graphic file (type pdf)
 <use images/db_token_user_auth.pdf>
 Package pdftex.def Info: images/db_token_user_auth.pdf  used on input line 139.
@@ -1834,8 +1829,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 147--149
 \T1/phv/m/n/10.95 rap-pre-sen-ta-te le due
  []
 
-[65] [66 <./images/db_token_user_auth.pdf>] [67]
-<images/db_location_sensor.pdf, id=1436, 845.04686pt x 642.97043pt>
+[65 <./images/db_token_user_auth.pdf>] [66] [67]
+<images/db_location_sensor.pdf, id=1437, 845.04686pt x 642.97043pt>
 File: images/db_location_sensor.pdf Graphic file (type pdf)
 <use images/db_location_sensor.pdf>
 Package pdftex.def Info: images/db_location_sensor.pdf  used on input line 234.
@@ -1904,18 +1899,18 @@ Underfull \hbox (badness 6477) in paragraph at lines 242--244
  []
 
 [68 <./images/db_location_sensor.pdf>] [69]
-<images/demo_api_stazioni_osservative_fisse.pdf, id=1466, 845.04686pt x 511.245
+<images/demo_api_stazioni_osservative_fisse.pdf, id=1467, 845.04686pt x 511.245
 67pt>
 File: images/demo_api_stazioni_osservative_fisse.pdf Graphic file (type pdf)
 <use images/demo_api_stazioni_osservative_fisse.pdf>
 Package pdftex.def Info: images/demo_api_stazioni_osservative_fisse.pdf  used o
 n input line 287.
 (pdftex.def)             Requested size: 418.25368pt x 253.04008pt.
-)) [70] [71 <./images/demo_api_stazioni_osservative_fisse.pdf>] [72
-
-]
+)) [70 <./images/demo_api_stazioni_osservative_fisse.pdf>]
 Capitolo 4.
-(./sections/cap4_conclusioni/endofeverything.tex)) [73] [74
+(./sections/cap4_conclusioni/endofeverything.tex)) [71
+
+] [72
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/sc' will be
@@ -1926,7 +1921,7 @@ Underfull \hbox (badness 3312) in paragraph at lines 45--45
 en-te di la-vo-ra-re (On-li-ne)\T1/phv/m/n/12 . Ul-ti-ma
  []
 
-[75
+[73
 
 ]
 Underfull \hbox (badness 5133) in paragraph at lines 45--45
@@ -1934,13 +1929,13 @@ Underfull \hbox (badness 5133) in paragraph at lines 45--45
 m/n/12 : []$\T1/cmtt/m/n/12 https : / / archive . org / details /
  []
 
-[76] [77]
+[74] [75]
 Underfull \hbox (badness 3260) in paragraph at lines 45--45
 \T1/phv/m/n/12 sul-ta-zio-ne: 19 apri-le 2024. \T1/phv/m/sc/12 url\T1/phv/m/n/1
 2 : []$\T1/cmtt/m/n/12 https : / / code . visualstudio .
  []
 
-[78]
+[76]
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <12> not available
 (Font)              Font shape `TS1/phv/m/sl' tried instead on input line 45.
 LaTeX Font Info:    Font shape `TS1/phv/m/sl' will be
@@ -1952,9 +1947,9 @@ n/12 . Ul-ti-ma con-sul-ta-zio-ne: 29 mag-gio 2024. \T1/phv/m/sc/12 url\T1/phv/
 m/n/12 :
  []
 
-[79] [80] [81] [82
+[77] [78] [79] [80
 
-] (./sections/ringraziamenti.tex) [83
+] (./sections/ringraziamenti.tex) [81
 
 ] (./main.aux)
  ***********
@@ -1966,13 +1961,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44103 strings out of 476065
- 881008 string characters out of 5793347
- 2248187 words of memory out of 5000000
+ 44100 strings out of 476065
+ 880981 string characters out of 5793347
+ 2260187 words of memory out of 5000000
  64861 multiletter control sequences out of 15000+600000
  644483 words of font info for 136 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 91i,14n,136p,3336b,2804s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 91i,14n,136p,3336b,2828s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/fdsymbol/FdSymbolA-Book.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/fdsymbol/FdSymbolE-Book.pfb></usr/share/texm
 f-dist/fonts/type1/public/fdsymbol/FdSymbolF-Book.pfb></usr/share/texmf-dist/fo
@@ -1983,10 +1978,10 @@ share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dis
 t/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/he
 lvetic/uhvbo8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><
 /usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (89 pages, 25235422 bytes).
+Output written on main.pdf (87 pages, 25233944 bytes).
 PDF statistics:
- 1917 PDF objects out of 2073 (max. 8388607)
- 1687 compressed objects within 17 object streams
- 699 named destinations out of 1000 (max. 500000)
+ 1907 PDF objects out of 2073 (max. 8388607)
+ 1679 compressed objects within 17 object streams
+ 696 named destinations out of 1000 (max. 500000)
  356 words of extra memory for PDF output out of 10000 (max. 10000000)
 
